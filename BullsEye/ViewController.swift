@@ -34,8 +34,6 @@ class ViewController: UIViewController {
         restartButton.layer.cornerRadius = 10
         restartButton.clipsToBounds = true
         
-        
-        
         startNewRound()
         
     }
@@ -49,11 +47,8 @@ class ViewController: UIViewController {
         let points = calculateRoundPoints()
         score += points
         let alertTitle = calculateAlertTitle(points)
-        
         let message = "The value of the slider is: \(currentValue)" + " \nThe target value is: \(targetValue)" + "\nYou scored: \(points) points"
-        
         let alert = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
-
         let action = UIAlertAction(title: "OK", style: .default, handler: {action in self.startNewRound()})
 
         alert.addAction(action)
@@ -79,8 +74,8 @@ class ViewController: UIViewController {
     
     func startNewRound(){
         targetValue = 1 + Int(arc4random_uniform(100))
-        setTargetScoreLabel()
         round += 1
+        setTargetScoreLabel()
         updateRoundLabel()
         updateScoreLabel()
     }
