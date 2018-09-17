@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import QuartzCore
+
 
 class ViewController: UIViewController {
 
-    var currentValue: Int = 0
+    var currentValue: Int = 50
     var targetValue: Int = 0
     var score: Int = 0
     var round: Int = 0
@@ -28,7 +30,7 @@ class ViewController: UIViewController {
         scoreLabel.text = String(0)
         roundLabel.text = String(1)
         
-        actionButton.layer.cornerRadius = 30
+        actionButton.layer.cornerRadius = 10
         actionButton.clipsToBounds = true
         
         restartButton.layer.cornerRadius = 10
@@ -66,6 +68,12 @@ class ViewController: UIViewController {
         updateScoreLabel()
         updateRoundLabel()
         startNewRound()
+        slider.value = 50
+        let transition = CATransition()
+        transition.type = kCATransitionFade
+        transition.duration = 1
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        view.layer.add(transition, forKey: nil)
     }
     
     func setTargetScoreLabel() {
